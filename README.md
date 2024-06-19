@@ -1,2 +1,2 @@
-# recruit-bot
- A recruitment bot for Minecraft Bedrock Edition.
+# recruit-bot-V2
+ Version 2.0 of recruit-bot repository

@@ -1,0 +1,19 @@
+{
+  "name": "imp-message",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "luciffrr",
+  "license": "ISC",
+  "dependencies": {
+    "bedrock-protocol": "^3.36.0",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "uuid": "^9.0.1",
+    "uuidv4": "^6.2.13"
+  }
+}
