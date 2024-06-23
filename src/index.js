@@ -3,6 +3,11 @@ const axios = require('axios');
 require('dotenv').config();
 const { v4: uuidv4 } = require('uuid');
 const bedrock = require('bedrock-protocol');
+const http = require('http');
+
+// Server Configuration for Host and Port
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 10000;
 
 // Minecraft bot options
 const botOptions = {
@@ -22,7 +27,7 @@ const client = new Client({
 
 let mcBot;
 const MESSAGE_SPAM_COUNT = 20;
-const MESSAGE_DELAY = 60 * 1000; // 2 minutes
+const MESSAGE_DELAY = 60 * 1000; // 1 minute
 
 client.on("ready", async () => {
   await sendWebhookMessage(`${client.user.tag} has awakened`);
@@ -172,6 +177,21 @@ async function sendWebhookMessage(message) {
   }
 }
 
+// Setting up server with keepAliveTimeout and headersTimeout
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Server is running');
+});
+
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000; // 120 seconds
+
+server.listen(PORT, HOST, () => {
+  console.log(`Server running at http://${HOST}:${PORT}/`);
+});
+
+// Login to Discord
 client.login(process.env.TOKEN).catch(err => {
   console.error('Failed to login:', err);
 });
