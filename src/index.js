@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 10000;
 
 // Minecraft bot options
 const botOptions = {
-  host: 'play.lbsg.net',
+  host: process.env.SERVER,
   port: 19132,
   username: process.env.USER
 };
